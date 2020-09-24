@@ -127,19 +127,6 @@ class VerificationTest < ActionController::TestCase
     assert_redirected_to '/foo'
   end
 
-  def test_no_deprecation_warning_for_named_route
-    assert_not_deprecated do
-      with_routing do |set|
-        set.draw do
-          get 'foo', :to => 'test#foo', :as => :foo
-          get 'verification_test/:action', :controller => 'verification_test'
-        end
-        get :guarded_one_for_named_route_test, :two => "not one"
-        assert_redirected_to '/foo'
-      end
-    end
-  end
-
   def test_guarded_one_with_prereqs
     get :guarded_one, :one => "here"
     assert_equal "here", @response.body
@@ -277,13 +264,5 @@ class VerificationTest < ActionController::TestCase
 
   def test_second_redirect
     assert_nothing_raised { get :two_redirects }
-  end
-
-  def test_guarded_http_method_respects_overwritten_request_method
-    # Overwrite http method on application level like Rails supports via sending a _method parameter
-    @request.stubs(:request_method_symbol).returns(:put)
-
-    post :must_be_put
-    assert_equal "Was a put!", @response.body
   end
 end
