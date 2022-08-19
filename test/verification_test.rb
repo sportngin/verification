@@ -156,7 +156,7 @@ class VerificationTest < ActionController::TestCase
   end
 
   def test_guarded_two_with_prereqs
-    get :guarded_two, params: { one: "here", two: "there" }
+    get :guarded_two, sesssion: { one: "here", two: "there" }
 
     assert_equal("here:there", @response.body)
   end
@@ -192,7 +192,7 @@ class VerificationTest < ActionController::TestCase
   end
 
   def test_guarded_in_session_with_prereqs
-    get :guarded_in_session, params: { "one" => "here" }
+    get :guarded_in_session, session: { "one" => "here" }
 
     assert_equal("here", @response.body)
   end
@@ -204,7 +204,7 @@ class VerificationTest < ActionController::TestCase
   end
 
   def test_multi_one_with_prereqs
-    get :multi_one, params: { "one" => "here", "two" => "there" }
+    get :multi_one, session: { "one" => "here", "two" => "there" }
 
     assert_equal("here:there", @response.body)
   end
@@ -216,7 +216,7 @@ class VerificationTest < ActionController::TestCase
   end
 
   def test_multi_two_with_prereqs
-    get :multi_two, params: {"one" => "here", "two" => "there"}
+    get :multi_two, session: {"one" => "here", "two" => "there"}
 
     assert_equal("there:here", @response.body)
   end
