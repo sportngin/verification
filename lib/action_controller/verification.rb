@@ -79,20 +79,15 @@ module ActionController #:nodoc:
       #   do not apply this verification to the actions specified in the associated
       #   array (may also be a single value).
       def verify(options={})
-        before_filter_or_before_action_for_options :only => options[:only], :except => options[:except] do
-          verify_action options
+        before_action_for_options(:only => options[:only], :except => options[:except]) do
+          verify_action(options)
         end
       end
 
       private
-      # fix DEPRECATION WARNING:
-      # before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead
-      def before_filter_or_before_action_for_options(options, &block)
-        if respond_to? :before_action
-          before_action options, &block
-        else
-          before_filter options, &block
-        end
+
+      def before_action_for_options(options, &block)
+        before_action(options, &block)
       end
     end
 
@@ -123,10 +118,14 @@ module ActionController #:nodoc:
     end
 
     def verify_request_xhr_status(options) # :nodoc:
+      byebug
       !!request.xhr? != options[:xhr] unless options[:xhr].nil?
     end
 
     def apply_redirect_to(redirect_to_option) # :nodoc:
+      if redirect_to_option == :back
+        return request.env["HTTP_REFERER"]
+      end
       (redirect_to_option.is_a?(Symbol) && redirect_to_option != :back) ? self.__send__(redirect_to_option) : redirect_to_option
     end
 
