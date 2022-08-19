@@ -3,4 +3,3 @@ pkg/*
 *.gem
 .bundle
 gemfiles/*.lock
-.byebug_history

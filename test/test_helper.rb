@@ -3,7 +3,6 @@ require 'test/unit'
 require 'mocha/setup'
 require 'active_support'
 require 'action_controller'
-require 'byebug'
 
 if ActiveSupport::VERSION::MAJOR > 3
   require 'active_support/testing/autorun'
