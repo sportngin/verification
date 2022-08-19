@@ -118,7 +118,6 @@ module ActionController #:nodoc:
     end
 
     def verify_request_xhr_status(options) # :nodoc:
-      byebug
       !!request.xhr? != options[:xhr] unless options[:xhr].nil?
     end
 
