@@ -156,7 +156,7 @@ class VerificationTest < ActionController::TestCase
   end
 
   def test_guarded_two_with_prereqs
-    get :guarded_two, session: { one: "here", two: "there" }
+    get :guarded_two, params: { "one" => "here", "two" => "there" }
 
     assert_equal("here:there", @response.body)
   end
