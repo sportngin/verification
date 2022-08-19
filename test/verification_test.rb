@@ -7,7 +7,7 @@ class VerificationTestController < ActionController::Base
          add_flash: { error: 'unguarded' },
          redirect_to: { action: "unguarded" }
 
-  verify only: :guarded_two, params: "%w( one two )",
+  verify only: :guarded_two, params: %w( one two ),
          redirect_to: { action: "unguarded" }
 
   verify only: :guarded_with_flash, :params => "one",
