@@ -36,3 +36,4 @@ the content of the session or the parameters. That level of validation should
 be encapsulated by your domain model or helper methods in the controller.
 
 ** Version 2.0.0 introduces breaking changes that remove support for Rails < 5.0 **
+** Version 3.0.0 introduces breaking changes that remove support for Ruby < 2.6.1 **
