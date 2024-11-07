@@ -15,11 +15,11 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency('activesupport', '>= 5.0.0', '< 6')
-  s.add_dependency('actionpack', '>= 5.0.0', '< 6')
+  s.add_dependency('activesupport', '>= 5.0.0', '< 6.2')
+  s.add_dependency('actionpack', '>= 5.0.0', '< 6.2')
 
   s.add_development_dependency('rake')
   s.add_development_dependency('appraisal')
-  s.add_development_dependency('test-unit', '~> 2.5.5')
+  s.add_development_dependency('test-unit')
   s.add_development_dependency('mocha', "1.0.0.alpha")
 end
