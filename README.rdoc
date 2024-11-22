@@ -1,3 +1,4 @@
+
 {<img src="https://travis-ci.org/sikachu/verification.png" />}[https://travis-ci.org/sikachu/verification]
 
 This module provides a class-level method for specifying that certain
